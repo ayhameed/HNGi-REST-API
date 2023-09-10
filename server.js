@@ -1,19 +1,22 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require('cors')
+const mongoose = require("mongoose");
 const app = express();
 
+// Import the hello route handler
+const createrouter = require('./routes/createPerson');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// enable cors
-app.use(cors())
+
+//allow cors to react app
+app.use(cors());
+
 require("dotenv").config();
-
 const PORT = process.env.PORT;
-const MongoDB_CONNECTION_URL = process.env.MONGODB_CONNECTION_URL;
 
+const MongoDB_CONNECTION_URL = process.env.MONGODB_CONNECTION_URL;
 mongoose
     .connect(MongoDB_CONNECTION_URL, {
         useNewUrlParser: true,
@@ -26,13 +29,9 @@ mongoose
         console.error("MongoDB Connection error:", error);
     });
 
-const Person = new mongoose.Schema({
-    Name: {
-        type: String,
-        required: true,
-    },
-});
+// Handle POST requests to /createPerson to add person
+app.use('/api', createrouter);
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
-  });
+});
