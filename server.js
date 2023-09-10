@@ -32,3 +32,7 @@ const Person = new mongoose.Schema({
         required: true,
     },
 });
+
+app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+  });
