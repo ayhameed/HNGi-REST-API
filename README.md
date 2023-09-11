@@ -12,7 +12,7 @@
  - `node server.js`  would start up the server but you would need to restart the server when you make changes
 
  # Diagrams
--  <a href ="https://lucid.app/lucidchart/c30f517e-3bd1-4e17-a5ea-38be79d2f749/edit?viewport_loc=21%2C-11%2C1579%2C860%2C0_0&invitationId=inv_abce64fd-4d23-443f-b983-2f9834cba86a"> UML Diagram (On Lucid Chart) </a>
+-  <a href ="https://drive.google.com/file/d/1Bu-QNSPIKMDI1RN8MjQqqZ5OZs_c0S9m/view?usp=sharing"> UML Diagram </a>
 - <a href = "https://github.com/ayhameed/HNGi-REST-API/blob/main/DOCUMENTATION.md"> Complete API documentation</a>
 - <a href =  ""> Documentation on Postman </a>
  
