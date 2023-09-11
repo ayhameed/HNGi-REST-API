@@ -3,8 +3,8 @@
 - Install node dependenices : npm i
 - Setup a mongodb instance at <a href="https://cloud.mongodb.com/"> Mongodb atlas </a> or using a local instance of Mongodb 
 - create a .env file with the following fields:
-    - `MONGODB_CONNECTION_URL = 'Mongodb connection Url'`
-    - `PORT = 'desired port number'`
+    - MONGODB_CONNECTION_URL = `'Mongodb connection Url'`
+    - PORT = `'desired port number'`
 
 # Run
  - Open terminal and run `nodemon server.js` or `node server.js`
