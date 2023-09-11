@@ -14,7 +14,6 @@
  # Diagrams
 -  <a href ="https://drive.google.com/file/d/1Bu-QNSPIKMDI1RN8MjQqqZ5OZs_c0S9m/view?usp=sharing"> UML Diagram </a>
 - <a href = "https://github.com/ayhameed/HNGi-REST-API/blob/main/DOCUMENTATION.md"> Complete API documentation</a>
-- <a href =  ""> Documentation on Postman </a>
  
 
 # The  API
