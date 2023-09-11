@@ -1,54 +1,54 @@
 ##  API Documentation
-    - Endpoint: /api
-            - Add a New Person
-            - Decription: Adds a new person to the database.
+    Endpoint: /api
+        Description : Operation that can be performed
 
         - Request: Add Person
-            - URL: <url>/api
-            - Method: POST
-            - Headers: Content-Type: application/json
-            - Body (JSON):
+            URL: <url>/api
+            Method: POST
+            Headers: Content-Type: application/json
+            Body (JSON):
                 {
                     "name": "abdulhameed yunusa"
                 }
-            - Responses: 
-                - Status: 201 ( If Person was successfully added)
+            Responses: 
+                Status: 201 ( If Person was successfully added)
                 {
                     "id": "64fe52afbbfdc9afd18900de",
                     "name": "abdulhameed yunusa"
                 }
 
-                - Status: 400 (if the passed name is not a string)
+                Status: 400 (if the passed name is not a string)
                 { 
                     message: 'Invalid name format' 
                 }
 
-                - Status: 409 (if Person already exists)
+                Status: 409 (if Person already exists)
                 { 
                     message: 'Person already exists' 
                 }
 
         - Request: Find Person
-            - URL: <url>/api
-            - Method: GET
-            - Query Parameters (Provide name or id):
-                - name (string, optional): The name of the person.
-                - id (string, optional): The unique ID of the person.
+            URL: <url>/api
+            Method: GET
+            Query Parameters (Provide name or id):
+                name (string, optional): The name of the person.
+                id (string, optional): The unique ID of the person.
 
-            - Example Request: by name
-                - GET http://<url>/api?name=abdulhameed%20yunusa
+            Example Request: by name
+                GET http://<url>/api?name=abdulhameed%20yunusa
                 {
                     "name": abdulhameed yunusa
                 }
-            -  Example Request: by id
+
+            Example Request: by id
                 GET http://<url>/api?id=64fe52afbbfdc9afd18900de
                 {
                     "id": 64fe52afbbfdc9afd18900de
                 }
 
-            -  Response: 
-                - Status: 200 (If Person is found and status is returned )
-                - Body: JSON
+            Response: 
+                Status: 200 (If Person is found and status is returned )
+                Body: JSON
                 {
                     "person": {
                         "_id": "64fe52afbbfdc9afd18900de",
@@ -56,29 +56,29 @@
                     }
                 }
 
-                - Status: 404 Not Found (If the person with the provided name or ID does not exist)
-                    - Body (JSON):
+                Status: 404 Not Found (If the person with the provided name or ID does not exist)
+                    Body (JSON):
                     {
                         "message": "Person not found"
                     }
 
-                - Status: 400 Bad Request (If neither name nor id is provided)
-                    -Body (JSON):
+                Status: 400 Bad Request (If neither name nor id is provided)
+                    Body (JSON):
                     {
                         "message": "Name or ID parameter is required"
                     }
 
         - Request : Modify Person
-            - URL: http://<url>/api
-            - Method: PUT
-            - Body (JSON):
-                - name (string, optional): The name of the person to be modified.
-                - id (string, optional): The unique ID of the person to be modified.
-                - newData (object, required): An object containing the new data to be applied to the person.
+            URL: http://<url>/api
+            Method: PUT
+            Body (JSON):
+                name (string, optional): The name of the person to be modified.
+                id (string, optional): The unique ID of the person to be modified.
+                newData (object, required): An object containing the new data to be applied to the person.
 
-            - Example Request: by name
-                - PUT http://<url>/api
-                - Content-Type: application/json
+            Example Request: by name
+                PUT http://<url>/api
+                Content-Type: application/json
                 {
                 "name": "abdulhameed yunusa",
                     "newData": {
@@ -86,9 +86,9 @@
                     }
                 }
        
-            - Example Request: by ID
-                - PUT http://<url>/api
-                - Content-Type: application/json
+            Example Request: by ID
+                PUT http://<url>/api
+                Content-Type: application/json
                 {
                 "id": "64fe52afbbfdc9afd18900de",
                     "newData": {
@@ -96,30 +96,32 @@
                     }
                 }
        
-        - Response
-            - Status: 200 OK
-                - Body (JSON):
-                    {
-                        "person": {
-                            "_id": "64fe52afbbfdc9afd18900de",
-                            "name": "Updated Name"
+            Response
+                Status: 200 OK
+                    Body (JSON):
+                        {
+                            "person": {
+                                "_id": "64fe52afbbfdc9afd18900de",
+                                "name": "Updated Name"
+                            }
                         }
-                    }
-            - Status: 404 Not Found (If the person with the provided name or ID does not exist)
-                - Body (JSON):
-                    {
-                        "message": "Person not found"
-                    }
-            - Status: 400 Bad Request (If newData is missing or not an object)
-                - Body (JSON):
-                    {
-                    "message": "New data object is required"
-                    }
-            - Status: 400 Bad Request (If neither name nor id is provided)
-                - Body (JSON):
-                    {
-                        "message": "Name or ID parameter is required"
-                    }
+
+                Status: 404 Not Found (If the person with the provided name or ID does not exist)
+                    - Body (JSON):
+                        {
+                            "message": "Person not found"
+                        }
+                Status: 400 Bad Request (If newData is missing or not an object)
+                    Body (JSON):
+                        {
+                        "message": "New data object is required"
+                        }
+
+                Status: 400 Bad Request (If neither name nor id is provided)
+                    Body (JSON):
+                        {
+                            "message": "Name or ID parameter is required"
+                        }
 
 
 
@@ -128,7 +130,7 @@
 ## Limitations and Assumptions
 - The API (POST: /api) assumes that the provided name field is a string and is required.
     - If a person with the same name already exists, the API will return a 409 Conflict status.
-    
+
 - The route (GET: /api) accepts either the person's name or ID but not both. You must provide either name or id as a query parameter.
     - If neither name nor id is provided, the route returns a 400 Bad Request response.
     - If the person with the provided name or ID does not exist, the route returns a 404 Not Found response.
