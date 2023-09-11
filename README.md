@@ -25,11 +25,16 @@
     - Description : This method creates a new product. The request body should contain the name of the 'person'
 
 - ### Find Person (GET)
-    - Route : `/api`
+    - Route : `/api/user_id`
     - HTTP Method : GET
     - Description : This method retrieves a person from database either by  `name ` or  `id`
 
 -  ### Modify Person (PUT)
-    - Route : `/api`
+    - Route : `/api/user_id`
     - HTTP Method : PUT
     - Description : This method retrieves a person from database either by  `name ` or  `id` then modifies the `name`
+
+-  ### Delete Person (Delete)
+    - Route : `/api/user_id`
+    - HTTP Method : DELETE
+    - Description : This method removes a person from database either by  `name ` or  `id`.

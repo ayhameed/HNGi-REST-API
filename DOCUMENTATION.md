@@ -2,14 +2,21 @@
     Endpoint: /api
         Description : Operation that can be performed
 
-        - Request: Add Person
-            URL: <url>/api
+        - Add a Person
+            URL: /api
             Method: POST
             Headers: Content-Type: application/json
             Body (JSON):
                 {
                     "name": "abdulhameed yunusa"
                 }
+
+            Example Request: 
+                POST <url>/api
+                {
+                    "name": abdulhameed yunusa
+                }
+
             Responses: 
                 Status: 201 ( If Person was successfully added)
                 {
@@ -27,26 +34,26 @@
                     message: 'Person already exists' 
                 }
 
-        - Request: Find Person
-            URL: <url>/api
+        - Find a Person
+            URL: /api/user_id
             Method: GET
             Query Parameters (Provide name or id):
                 name (string, optional): The name of the person.
                 id (string, optional): The unique ID of the person.
 
             Example Request: by name
-                GET http://<url>/api?name=abdulhameed%20yunusa
+                GET <url>/api/user_id?name=abdulhameed%20yunusa
                 {
                     "name": abdulhameed yunusa
                 }
 
             Example Request: by id
-                GET http://<url>/api?id=64fe52afbbfdc9afd18900de
+                GET <url>/api/user_id?id=64fe52afbbfdc9afd18900de
                 {
                     "id": 64fe52afbbfdc9afd18900de
                 }
 
-            Response: 
+            Responses: 
                 Status: 200 (If Person is found and status is returned )
                 Body: JSON
                 {
@@ -68,8 +75,8 @@
                         "message": "Name or ID parameter is required"
                     }
 
-        - Request : Modify Person
-            URL: http://<url>/api
+        - Modify a Persons' details
+            URL: /api/user_id
             Method: PUT
             Body (JSON):
                 name (string, optional): The name of the person to be modified.
@@ -77,7 +84,7 @@
                 newData (object, required): An object containing the new data to be applied to the person.
 
             Example Request: by name
-                PUT http://<url>/api
+                PUT <url>/api/user_id
                 Content-Type: application/json
                 {
                 "name": "abdulhameed yunusa",
@@ -86,8 +93,8 @@
                     }
                 }
        
-            Example Request: by ID
-                PUT http://<url>/api
+            Example Request: by id
+                PUT <url>/api/user_id
                 Content-Type: application/json
                 {
                 "id": "64fe52afbbfdc9afd18900de",
@@ -96,7 +103,7 @@
                     }
                 }
        
-            Response
+            Responses :
                 Status: 200 OK
                     Body (JSON):
                         {
@@ -107,14 +114,14 @@
                         }
 
                 Status: 404 Not Found (If the person with the provided name or ID does not exist)
-                    - Body (JSON):
+                    Body (JSON):
                         {
                             "message": "Person not found"
                         }
                 Status: 400 Bad Request (If newData is missing or not an object)
                     Body (JSON):
                         {
-                        "message": "New data object is required"
+                         "message": "New data object is required"
                         }
 
                 Status: 400 Bad Request (If neither name nor id is provided)
@@ -122,16 +129,54 @@
                         {
                             "message": "Name or ID parameter is required"
                         }
+        - Request
+            URL: /api/user_id
+            Method: DELETE
+            Query Parameters (Provide either name or id):
+                name (string, optional): The name of the person to be deleted.
+                id (string, optional): The unique ID of the person to be deleted.
 
+            Example Request : Delete by name
+                DELETE <url>/api/user_id?name=abdulhameed%20yunusa
+            Example Request : Delete by id
+                DELETE <url>/api/user_id?id=64fe52afbbfdc9afd18900de
 
+            Responses:
+                Status: 200 OK (Person was successfully deleted)
+                    Body (JSON):
+                        {
+                            "message": "Person deleted",
+                            "person": {
+                                "_id": "64fe52afbbfdc9afd18900de",
+                                "name": "Deleted Person Name"
+                            }
+                        }
 
-
+                Status: 404 Not Found (If the person with the provided name or ID does not exist)
+                    Body (JSON):
+                    {
+                        "message": "Person not found"
+                    }
+                Status: 400 Bad Request (If neither name nor id is provided)
+                    Body (JSON):
+                    {
+                        "message": "Name or ID parameter is required"
+                    }
 
 ## Limitations and Assumptions
 - The API (POST: /api) assumes that the provided name field is a string and is required.
     - If a person with the same name already exists, the API will return a 409 Conflict status.
 
-- The route (GET: /api) accepts either the person's name or ID but not both. You must provide either name or id as a query parameter.
+- The route (GET: /api/user_id) accepts either the person's name or ID but not both. You must provide either name or id as a query parameter.
+    - If neither name nor id is provided, the route returns a 400 Bad Request response.
+    - If the person with the provided name or ID does not exist, the route returns a 404 Not Found response.
+
+- The route (PUT: /api/user_id) accepts either the person's name or ID but not both. You must provide either name or id as a parameter.
+    - If neither name nor id is provided, the route returns a 400 Bad Request response.
+    - If the person with the provided name or ID does not exist, the route returns a 404 Not Found response.
+    - The request body must include a newData object containing the updated data for the person.
+
+- The route (DELETE: /api/user_id) accepts either the person's name or ID but not both. You must provide either name or id as a parameter.
     - If neither name nor id is provided, the route returns a 400 Bad Request response.
     - If the person with the provided name or ID does not exist, the route returns a 404 Not Found response.
 

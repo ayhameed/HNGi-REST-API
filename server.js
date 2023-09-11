@@ -3,13 +3,12 @@ const cors = require('cors')
 const mongoose = require("mongoose");
 const app = express();
 
-// Import the hello route handler
+// Import the route handlers
 const createRouter = require('./routes/createPerson');
 const getPersonRouter = require('./routes/getPerson');
 const modifyPersonRouter = require('./routes/modifyPerson');
+const deletePersonRouter = require('./routes/deletePerson');
 
-// Mount the route for modifying a person's details
-app.use('/api/person/modify', modifyPersonRouter);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -38,10 +37,13 @@ mongoose
 app.use('/api', createRouter);
 
 // Handle GET request to /getPerson to Fetch person details
-app.use('/api', getPersonRouter);
+app.use('/api/user_id', getPersonRouter);
 
 // Handle PUT request to /modifyPerson to modify person details
-app.use('/api', modifyPersonRouter);
+app.use('/api/user_id', modifyPersonRouter);
+
+// Handle DELETE request to /deletePerson to remove person from DB
+app.use('/api/user_id', deletePersonRouter);
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
