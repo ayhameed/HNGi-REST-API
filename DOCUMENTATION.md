@@ -3,15 +3,20 @@
             - Add a New Person
             - Decription: Adds a new person to the database.
 
-        - Request
+        - Request: Add Person
             - URL: url/api
             - Method: POST
             - Headers: Content-Type: application/json
             - Body (JSON):
-                json
                 {
                     "name": "abdulhameed yunusa"
                 }
+            - Response: 
+                {
+                    "id": "64fe52afbbfdc9afd18900de",
+                    "name": "abdulhameed yunusa"
+                }
+
 ## Limitations and Assumptions
 The API assumes that the provided name field is a string and is required.
 If a person with the same name already exists, the API will return a 409 Conflict status.
