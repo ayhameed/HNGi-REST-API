@@ -129,7 +129,8 @@
                         {
                             "message": "Name or ID parameter is required"
                         }
-        - Request
+                        
+        - Delete a person
             URL: /api/user_id
             Method: DELETE
             Query Parameters (Provide either name or id):
