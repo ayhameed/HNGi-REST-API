@@ -11,12 +11,11 @@
  - `nodemon server.js` would authomatically refresh the server when changes are made to *.js files
  - `node server.js`  would start up the server but you would need to restart the server when you make changes
 
- # Folder Setup
- - /models - contains DB schemas for mongoDB
- - /routes - contains routes and logic
- - .env - contains enviromental variables
- - server.js - contains an aggregation of operations that powers the server
-
+ # Diagrams
+-  <a href ="https://lucid.app/lucidchart/c30f517e-3bd1-4e17-a5ea-38be79d2f749/edit?viewport_loc=21%2C-11%2C1579%2C860%2C0_0&invitationId=inv_abce64fd-4d23-443f-b983-2f9834cba86a"> UML Diagram (On Lucid Chart) </a>
+- <a href = "https://github.com/ayhameed/HNGi-REST-API/blob/main/DOCUMENTATION.md"> Complete API documentation</a>
+- <a href =  ""> Documentation on Postman </a>
+ 
 
 # The  API
 - ### CREATE Person (POST)
@@ -38,3 +37,7 @@
     - Route : `/api/user_id`
     - HTTP Method : DELETE
     - Description : This method removes a person from database either by  `name ` or  `id`.
+
+<a href ="https://lucid.app/lucidchart/c30f517e-3bd1-4e17-a5ea-38be79d2f749/edit?viewport_loc=21%2C-11%2C1579%2C860%2C0_0&invitationId=inv_abce64fd-4d23-443f-b983-2f9834cba86a"> UML Diagram (On Lucid Chart) </a>
+<a href = "https://github.com/ayhameed/HNGi-REST-API/blob/main/DOCUMENTATION.md"> Complete API documentation</a>
+<a href =  ""> Documentation on Postman </a>
