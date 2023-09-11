@@ -19,7 +19,12 @@
 
 
 # The  API
-- ### CREATE (POST)
+- ### CREATE Person (POST)
     - Route : `/api`
     - HTTP Method : POST
     - Description : This method creates a new product. The request body should contain the name of the 'person'
+
+- ### Find Person (GET)
+    - Route : `/api`
+    - HTTP Method : GET
+    - Description : This method retrieves a person from database either by  `username ` or  `id`

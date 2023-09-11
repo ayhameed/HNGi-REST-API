@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const app = express();
 
 // Import the hello route handler
-const createrouter = require('./routes/createPerson');
+const createRouter = require('./routes/createPerson');
+const getPersonRouter = require('./routes/getPerson');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -30,7 +31,10 @@ mongoose
     });
 
 // Handle POST requests to /createPerson to add person
-app.use('/api', createrouter);
+app.use('/api', createRouter);
+
+// Handle GET request to /getPerson to Fetch person details
+app.use('/api', getPersonRouter);
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
