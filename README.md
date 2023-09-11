@@ -27,4 +27,9 @@
 - ### Find Person (GET)
     - Route : `/api`
     - HTTP Method : GET
-    - Description : This method retrieves a person from database either by  `username ` or  `id`
+    - Description : This method retrieves a person from database either by  `name ` or  `id`
+
+-  ### Modify Person (PUT)
+    - Route : `/api`
+    - HTTP Method : PUT
+    - Description : This method retrieves a person from database either by  `name ` or  `id` then modifies the `name`

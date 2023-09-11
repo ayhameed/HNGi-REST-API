@@ -1,5 +1,5 @@
 ##  API Documentation
-    - ## Endpoint: /api
+    - Endpoint: /api
             - Add a New Person
             - Decription: Adds a new person to the database.
 
@@ -47,7 +47,7 @@
                 }
 
             -  Response: 
-                - Status: 200
+                - Status: 200 (If Person is found and status is returned )
                 - Body: JSON
                 {
                     "person": {
@@ -56,21 +56,79 @@
                     }
                 }
 
+                - Status: 404 Not Found (If the person with the provided name or ID does not exist)
+                    - Body (JSON):
+                    {
+                        "message": "Person not found"
+                    }
+
+                - Status: 400 Bad Request (If neither name nor id is provided)
+                    -Body (JSON):
+                    {
+                        "message": "Name or ID parameter is required"
+                    }
+
+        - Request : Modify Person
+            - URL: http://<url>/api
+            - Method: PUT
+            - Body (JSON):
+                - name (string, optional): The name of the person to be modified.
+                - id (string, optional): The unique ID of the person to be modified.
+                - newData (object, required): An object containing the new data to be applied to the person.
+
+            - Example Request: by name
+                - PUT http://<url>/api
+                - Content-Type: application/json
+                {
+                "name": "abdulhameed yunusa",
+                    "newData": {
+                        "name": "Updated Name"
+                    }
+                }
+       
+            - Example Request: by ID
+                - PUT http://<url>/api
+                - Content-Type: application/json
+                {
+                "id": "64fe52afbbfdc9afd18900de",
+                    "newData": {
+                        "name": "Updated Name"
+                    }
+                }
+       
+        - Response
+            - Status: 200 OK
+                - Body (JSON):
+                    {
+                        "person": {
+                            "_id": "64fe52afbbfdc9afd18900de",
+                            "name": "Updated Name"
+                        }
+                    }
             - Status: 404 Not Found (If the person with the provided name or ID does not exist)
                 - Body (JSON):
-                {
-                    "message": "Person not found"
-                }
-
+                    {
+                        "message": "Person not found"
+                    }
+            - Status: 400 Bad Request (If newData is missing or not an object)
+                - Body (JSON):
+                    {
+                    "message": "New data object is required"
+                    }
             - Status: 400 Bad Request (If neither name nor id is provided)
-                -Body (JSON):
-                {
-                    "message": "Name or ID parameter is required"
-                }
+                - Body (JSON):
+                    {
+                        "message": "Name or ID parameter is required"
+                    }
+
+
+
+
 
 ## Limitations and Assumptions
 - The API (POST: /api) assumes that the provided name field is a string and is required.
     - If a person with the same name already exists, the API will return a 409 Conflict status.
+    
 - The route (GET: /api) accepts either the person's name or ID but not both. You must provide either name or id as a query parameter.
     - If neither name nor id is provided, the route returns a 400 Bad Request response.
     - If the person with the provided name or ID does not exist, the route returns a 404 Not Found response.

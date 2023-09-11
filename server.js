@@ -6,6 +6,10 @@ const app = express();
 // Import the hello route handler
 const createRouter = require('./routes/createPerson');
 const getPersonRouter = require('./routes/getPerson');
+const modifyPersonRouter = require('./routes/modifyPerson');
+
+// Mount the route for modifying a person's details
+app.use('/api/person/modify', modifyPersonRouter);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -35,6 +39,9 @@ app.use('/api', createRouter);
 
 // Handle GET request to /getPerson to Fetch person details
 app.use('/api', getPersonRouter);
+
+// Handle PUT request to /modifyPerson to modify person details
+app.use('/api', modifyPersonRouter);
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
