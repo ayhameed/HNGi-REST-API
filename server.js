@@ -48,3 +48,5 @@ app.use('/api/user_id', deletePersonRouter);
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
+
+module.exports = app; // Export your Express app

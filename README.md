@@ -37,6 +37,10 @@
     - HTTP Method : DELETE
     - Description : This method removes a person from database either by  `name ` or  `id`.
 
+## Test script
+- test cases have been included on `/tests`
+- to run test, `run npm` test in terminal
+
 <a href ="https://lucid.app/lucidchart/c30f517e-3bd1-4e17-a5ea-38be79d2f749/edit?viewport_loc=21%2C-11%2C1579%2C860%2C0_0&invitationId=inv_abce64fd-4d23-443f-b983-2f9834cba86a"> UML Diagram (On Lucid Chart) </a>
 <a href = "https://github.com/ayhameed/HNGi-REST-API/blob/main/DOCUMENTATION.md"> Complete API documentation</a>
 <a href =  ""> Documentation on Postman </a>
