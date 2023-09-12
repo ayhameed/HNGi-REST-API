@@ -12,7 +12,7 @@
                 }
 
             Example Request: 
-                POST <url>/api
+                POST /api
                 {
                     "name": abdulhameed yunusa
                 }
@@ -35,69 +35,47 @@
                 }
 
         - Find a Person
-            URL: /api/user_id
+            URL: /api/userID
             Method: GET
-            Query Parameters (Provide name or id):
-                name (string, optional): The name of the person.
-                id (string, optional): The unique ID of the person.
-
-            Example Request: by name
-                GET <url>/api/user_id?name=abdulhameed%20yunusa
-                {
-                    "name": abdulhameed yunusa
-                }
+            Route Parameters (userID):
+                id (string, required): The unique ID of the person.
 
             Example Request: by id
-                GET <url>/api/user_id?id=64fe52afbbfdc9afd18900de
-                {
-                    "id": 64fe52afbbfdc9afd18900de
-                }
+                GET /api/6500705cbba5bda01ca8b10c
 
             Responses: 
                 Status: 200 (If Person is found and status is returned )
                 Body: JSON
                 {
                     "person": {
-                        "_id": "64fe52afbbfdc9afd18900de",
+                        "_id": "6500705cbba5bda01ca8b10c",
                         "name": "abdulhameed yunusa"
                     }
                 }
 
-                Status: 404 Not Found (If the person with the provided name or ID does not exist)
+                Status: 404 Not Found (If the person with the provided  ID does not exist)
                     Body (JSON):
                     {
                         "message": "Person not found"
                     }
 
-                Status: 400 Bad Request (If neither name nor id is provided)
+                Status: 400 Bad Request (If id is not provided)
                     Body (JSON):
                     {
-                        "message": "Name or ID parameter is required"
+                        "message": "ID parameter is required"
                     }
 
         - Modify a Persons' details
-            URL: /api/user_id
+            URL: /api/userID
             Method: PUT
             Body (JSON):
-                name (string, optional): The name of the person to be modified.
-                id (string, optional): The unique ID of the person to be modified.
+                name (string, required): The name of the person to be modified.
                 newData (object, required): An object containing the new data to be applied to the person.
-
-            Example Request: by name
-                PUT <url>/api/user_id
-                Content-Type: application/json
-                {
-                "name": "abdulhameed yunusa",
-                    "newData": {
-                        "name": "Updated Name"
-                    }
-                }
        
             Example Request: by id
-                PUT <url>/api/user_id
+                PUT /api/6500705cbba5bda01ca8b10c
                 Content-Type: application/json
                 {
-                "id": "64fe52afbbfdc9afd18900de",
                     "newData": {
                         "name": "Updated Name"
                     }
@@ -108,12 +86,13 @@
                     Body (JSON):
                         {
                             "person": {
-                                "_id": "64fe52afbbfdc9afd18900de",
-                                "name": "Updated Name"
+                                "_id": "6500705cbba5bda01ca8b10c",
+                                "name": "Updated Name",
+                                "__v" : 0
                             }
                         }
 
-                Status: 404 Not Found (If the person with the provided name or ID does not exist)
+                Status: 404 Not Found (If the person with  ID does not exist)
                     Body (JSON):
                         {
                             "message": "Person not found"
@@ -127,20 +106,17 @@
                 Status: 400 Bad Request (If neither name nor id is provided)
                     Body (JSON):
                         {
-                            "message": "Name or ID parameter is required"
+                            "message": "ID parameter is required"
                         }
 
         - Delete a person
-            URL: /api/user_id
+            URL: /api/userID
             Method: DELETE
-            Query Parameters (Provide either name or id):
-                name (string, optional): The name of the person to be deleted.
-                id (string, optional): The unique ID of the person to be deleted.
+            Route Parameters (Provide userID):
+                id (string, required): The unique ID of the person to be deleted.
 
-            Example Request : Delete by name
-                DELETE <url>/api/user_id?name=abdulhameed%20yunusa
             Example Request : Delete by id
-                DELETE <url>/api/user_id?id=64fe52afbbfdc9afd18900de
+                DELETE /api/6500705cbba5bda01ca8b10c
 
             Responses:
                 Status: 200 OK (Person was successfully deleted)
@@ -148,8 +124,8 @@
                         {
                             "message": "Person deleted",
                             "person": {
-                                "_id": "64fe52afbbfdc9afd18900de",
-                                "name": "Deleted Person Name"
+                                "_id": "6500705cbba5bda01ca8b10c",
+                                "name": "Abdulhameed Yunusa"
                             }
                         }
 
@@ -164,6 +140,8 @@
                         "message": "Name or ID parameter is required"
                     }
 # Diagrams
+- UML
+![Screenshot](/public/uml.png)
 -  <a href ="https://drive.google.com/file/d/1Bu-QNSPIKMDI1RN8MjQqqZ5OZs_c0S9m/view?usp=sharing"> UML Diagram </a>
 - <a href = "https://github.com/ayhameed/HNGi-REST-API/blob/main/DOCUMENTATION.md"> Complete API documentation</a>
 

@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require("mongoose");
 const Person = require('../models/personModel');
 
 const router = express.Router();
@@ -12,17 +13,11 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'Invalid name format' });
     }
 
-    // Check if a person with the same name already exists
-    const existingPerson = await Person.findOne({ name });
-    if (existingPerson) {
-      return res.status(409).json({ message: 'Person already exists' });
-    }
-
     // Create a new Person
     const person = new Person({
       name,
     });
-   
+
     // Save the person to the database
     await person.save();
 
