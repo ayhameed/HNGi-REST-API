@@ -125,7 +125,8 @@
                             "message": "Person deleted",
                             "person": {
                                 "_id": "6500705cbba5bda01ca8b10c",
-                                "name": "Abdulhameed Yunusa"
+                                "name": "Abdulhameed Yunusa",
+                                "__v": 0
                             }
                         }
 
@@ -140,10 +141,8 @@
                         "message": "Name or ID parameter is required"
                     }
 # Diagrams
-- UML
+- UML Diagram
 ![Screenshot](/public/uml.png)
--  <a href ="https://drive.google.com/file/d/1Bu-QNSPIKMDI1RN8MjQqqZ5OZs_c0S9m/view?usp=sharing"> UML Diagram </a>
-- <a href = "https://github.com/ayhameed/HNGi-REST-API/blob/main/DOCUMENTATION.md"> Complete API documentation</a>
 
 ## Limitations and Assumptions
 - The API (POST: /api) assumes that the provided name field is a string and is required.
